@@ -13,7 +13,16 @@ public class DevBookRequest {
     public static Response getAllProfiles(){
         response= given().accept(ContentType.JSON)
                 .when()
-                .get(ConfigurationReader.get("retrieve_all_profile"));
+                .get(ConfigurationReader.get("getAllProfiles"));
+        response.prettyPrint();
+        return response;
+    }
+
+    public static Response getOneUserWithPathParam(int id){
+        response=given().accept(ContentType.JSON)
+                .pathParam("userID",id)
+                .when()
+                .get(ConfigurationReader.get("getOneUserWithPathParam"));
         response.prettyPrint();
         return response;
     }
