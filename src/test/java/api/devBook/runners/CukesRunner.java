@@ -12,7 +12,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features",
         glue = "api/devBook/stepDefs",
         dryRun = false,
-        tags = "@profileWithID"
+        tags = "@register"
 )
 public class CukesRunner {
 }

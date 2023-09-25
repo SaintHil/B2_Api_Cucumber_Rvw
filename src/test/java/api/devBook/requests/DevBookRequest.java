@@ -1,5 +1,6 @@
 package api.devBook.requests;
 
+import api.devBook.common.DataForApi;
 import api.devBook.utilities.ConfigurationReader;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -25,6 +26,19 @@ public class DevBookRequest {
                 .get(ConfigurationReader.get("getOneUserWithPathParam"));
         response.prettyPrint();
         return response;
+    }
+
+    public static Response registerNewUser(String email, String password, String name,
+                                           String google, String facebook, String github){
+        response=given().accept(ContentType.JSON)
+                .and()
+                .contentType(ContentType.JSON)
+                .and()
+                .body(DataForApi.registerUserBody(email, password, name, google, facebook, github))
+                .when()
+                .post(ConfigurationReader.get("registerNewUser"));
+        response.prettyPrint();
+    return response;
     }
 
 
