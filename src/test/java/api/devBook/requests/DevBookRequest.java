@@ -1,6 +1,6 @@
 package api.devBook.requests;
 
-import api.devBook.common.DataForApi;
+import static api.devBook.common.DataForApi.*;
 import api.devBook.utilities.ConfigurationReader;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -34,7 +34,7 @@ public class DevBookRequest {
                 .and()
                 .contentType(ContentType.JSON)
                 .and()
-                .body(DataForApi.registerUserBody(email, password, name, google, facebook, github))
+                .body(registerUserBody(email, password, name, google, facebook, github))
                 .when()
                 .post(ConfigurationReader.get("registerNewUser"));
         response.prettyPrint();
