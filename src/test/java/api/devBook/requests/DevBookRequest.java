@@ -45,5 +45,22 @@ public class DevBookRequest {
     return response;
     }
 
+    public static Response postSaveProfile(String company,String website,String location,
+                                           String status, String skills,String githubusername,
+                                           String youtube, String  twitter, String facebook,String linkedin,
+                                           String instagram){
+        given().accept(ContentType.JSON)
+                .and()
+                .contentType(ContentType.JSON)
+                .and()
+                .header("x-auth-token",ConfigurationReader.get("newUserToken"))
+                .and()
+                .body(saveProfileBody(company, website, location, status, skills, githubusername, youtube, twitter, facebook, linkedin, instagram))
+                .when()
+                .post(ConfigurationReader.get("postSaveProfile"));
+        response.prettyPrint();
+        return response;
+    }
+
 
 }

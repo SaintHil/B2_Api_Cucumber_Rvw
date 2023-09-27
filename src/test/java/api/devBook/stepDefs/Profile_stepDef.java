@@ -44,4 +44,17 @@ public class Profile_stepDef {
         assertEquals(expectedCompany,actualCompany);
         assertEquals(expectedLocation,actualLocation);
     }
+
+    @When("The user sends a POST request with {string} and {string} and {string} and {string} and {string} and {string} and {string} and {string} and {string} and {string} and {string}")
+    public void the_user_sends_a_post_request_with_and_and_and_and_and_and_and_and_and_and(String company,String website,String location,
+                                                                                           String status, String skills,String githubusername,
+                                                                                           String youtube, String  twitter, String facebook,String linkedin,
+                                                                                           String instagram) {
+        response=postSaveProfile(company, website, location, status, skills, githubusername, youtube, twitter, facebook, linkedin, instagram);
+    }
+
+    @Then("The user verifies that name as {string} and email as {string}")
+    public void the_user_verifies_that_name_as_and_email_as(String string, String string2) {
+
+    }
 }
