@@ -1,5 +1,7 @@
 package api.devBook.stepDefs;
 
+import api.devBook.utilities.ConfigurationReader;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
@@ -7,6 +9,7 @@ import static api.devBook.requests.DevBookRequest.*;
 import static org.junit.Assert.*;
 
 public class SignUp_stepDef {
+
     @When("The user sends a POST request with {string} and {string} and {string} and {string} and {string} and {string}")
     public void the_user_sends_a_post_request_with_and_and_and_and_and(String email, String password, String name,
                                                                        String google, String facebook, String github) {
@@ -18,4 +21,8 @@ public class SignUp_stepDef {
         assertTrue(response.body().asString().contains(content));
     }
 
+    @And("The compiler gets the token")
+    public void theCompilerGetsTheToken() {
+        ConfigurationReader.set("newUserToken",token);
+    }
 }

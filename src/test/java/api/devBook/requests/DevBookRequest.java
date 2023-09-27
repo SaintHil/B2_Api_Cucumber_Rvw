@@ -11,6 +11,8 @@ public class DevBookRequest {
 
  public static Response response;
 
+ public static String token;
+
     public static Response getAllProfiles(){
         response= given().accept(ContentType.JSON)
                 .when()
@@ -38,6 +40,8 @@ public class DevBookRequest {
                 .when()
                 .post(ConfigurationReader.get("registerNewUser"));
         response.prettyPrint();
+        token=response.path("token");
+
     return response;
     }
 
