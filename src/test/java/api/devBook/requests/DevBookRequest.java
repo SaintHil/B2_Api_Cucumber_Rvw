@@ -49,7 +49,7 @@ public class DevBookRequest {
                                            String status, String skills,String githubusername,
                                            String youtube, String  twitter, String facebook,String linkedin,
                                            String instagram){
-        given().accept(ContentType.JSON)
+        response=given().accept(ContentType.JSON)
                 .and()
                 .contentType(ContentType.JSON)
                 .and()

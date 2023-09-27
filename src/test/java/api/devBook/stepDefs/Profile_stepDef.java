@@ -54,7 +54,9 @@ public class Profile_stepDef {
     }
 
     @Then("The user verifies that name as {string} and email as {string}")
-    public void the_user_verifies_that_name_as_and_email_as(String string, String string2) {
+    public void the_user_verifies_that_name_as_and_email_as(String expectedName, String expectedEmail) {
+        assertEquals(expectedName,response.path("user.name"));
+        assertEquals(expectedEmail,response.path("user.email"));
 
     }
 }
