@@ -62,5 +62,36 @@ public class DevBookRequest {
         return response;
     }
 
+    public static Response postExperience(String title,String company,String location,
+                                          String from, String to,String current,
+                                          String description){
+        response=given().accept(ContentType.JSON)
+                .and()
+                .contentType(ContentType.JSON)
+                .and()
+                .header("x-auth-token",ConfigurationReader.get("postLoginToken"))
+                .and()
+                .body(addExperienceBody(title, company, location, from, to, current, description))
+                .when()
+                .post(ConfigurationReader.get("postExperience"));
+        response.prettyPrint();
+        return response;
+    }
+
+    public static Response getExperience(int id){
+        response=given().accept(ContentType.JSON)
+                .and()
+                .contentType(ContentType.JSON)
+                .and()
+                .header("x-auth-token",ConfigurationReader.get("postLoginToken"))
+                .and()
+                .and()
+                .pathParam("experienceID",id)
+                .when()
+                .get(ConfigurationReader.get("getExperience"));
+        response.prettyPrint();
+        return response;
+    }
+
 
 }
